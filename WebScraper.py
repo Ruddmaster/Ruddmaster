@@ -9,7 +9,11 @@ results = beautiful_soup.find(id="resultsCol")
 job_elements = results.find_all("div", class_="jobsearch-SerpJobCard unifiedRow row result")
 
 for job_element in job_elements:
-    print(job_element, end="\n"*2)
-    #title_element = job_elements.find('h2', class_="title")
-    #company_elem = job_elements.find('div', class_="company")
-    #location_elem = job_elements.find('div', class_="location accessible-contrast-color-location")
+    title_element = job_element.find('h2', class_="title")
+    company_elem = job_element.find('span', class_="company")
+    location_elem = job_element.find('div', class_="location accessible-contrast-color-location")
+    print(title_element.text.strip())
+    print(company_elem.text.strip())
+    if location_elem:
+        print(location_elem.text)
+    print()
